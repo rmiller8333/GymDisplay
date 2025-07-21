@@ -20,30 +20,52 @@
       max-width: 80%;
       border-radius: 10px;
     }
-    iframe {
+    .weather {
       margin-top: 40px;
-      border: none;
     }
   </style>
 </head>
 <body>
   <div id="clock"></div>
 
-  <img class="workout-img" src="https://photos.app.goo.gl/9jJpDtFd29VdCZ7y7" alt="Workout Plan">
+  <img class="workout-img" src="https://via.placeholder.com/600x400?text=Workout+Plan" alt="Workout Plan">
 
-  <iframe src="https://forecast7.com/en/38d96n94d38/greenwood/" width="300" height="250"></iframe>
+  <!-- ✅ WeatherWidget.io embedded widget only -->
+  <div class="weather">
+   <a class="weatherwidget-io" href="https://forecast7.com/en/38d85n94d34/greenwood/?unit=us" data-label_1="GREENWOOD" data-label_2="WEATHER" data-theme="original" >GREENWOOD WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+       GREENWOOD WEATHER
+    </a>
+  </div>
 
   <script>
+    // ⏰ Central Time Clock
     function updateClock() {
       const now = new Date();
-      document.getElementById('clock').innerText = now.toLocaleTimeString([], {
+      document.getElementById('clock').innerText = now.toLocaleTimeString('en-US', {
         hour: '2-digit',
         minute: '2-digit',
-        hour12: true
+        hour12: true,
+        timeZone: 'America/Chicago'
       });
     }
     updateClock();
     setInterval(updateClock, 1000);
+  </script>
+
+  <!-- ✅ Loads WeatherWidget.io script -->
+  <script>
+    !function(d,s,id){
+      var js,fjs=d.getElementsByTagName(s)[0];
+      if(!d.getElementById(id)){
+        js=d.createElement(s);
+        js.id=id;
+        js.src='https://weatherwidget.io/js/widget.min.js';
+        fjs.parentNode.insertBefore(js,fjs);
+      }
+    }(document,'script','weatherwidget-io-js');
   </script>
 </body>
 </html>
