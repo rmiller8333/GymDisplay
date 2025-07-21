@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  
   <title>Home Gym Dashboard</title>
   <meta http-equiv="refresh" content="3600"> <!-- Auto-refresh every hour -->
   <style>
@@ -12,47 +11,66 @@
       color: #fff;
       font-family: sans-serif;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
     #clock {
-      font-size: 6em;
-      margin-top: 60px;
-    }
-    .workout-img {
+      font-size: 5em;
       margin-top: 40px;
+    }
+
+    .workout-img {
+      margin-top: 30px;
+      width: 90vw;
+      height: auto;
+      aspect-ratio: 3/4;
+      border: none;
       border-radius: 10px;
     }
+
     .weather {
-      margin-top: 40px;
+      margin-top: 30px;
+      width: 90vw;
+      max-width: 600px;
+    }
+
+    .weather a {
+      width: 100% !important;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
   <div id="clock"></div>
 
-  <!-- ✅ Displays Google Drive image as iframe -->
+  <!-- 🔁 Workout screenshot from Google Drive -->
   <iframe class="workout-img"
           src="https://drive.google.com/file/d/1AJOeJGPJpaylSuUjsebNeh2EfxsOtZGL/preview"
-          width="800"
-          height="600"
-          frameborder="0"
           allowfullscreen>
   </iframe>
 
-  <!-- ✅ WeatherWidget.io embedded correctly -->
+  <!-- 🌦️ Weather widget -->
   <div class="weather">
     <a class="weatherwidget-io"
        href="https://forecast7.com/en/38d85n94d34/greenwood/?unit=us"
        data-label_1="GREENWOOD"
        data-label_2="WEATHER"
-       data-icons="Climacons"
-       data-days="5"
-       data-theme="original">
+       data-theme="original"
+       data-basecolor="#000"
+       data-textcolor="#fff"
+       data-highcolor="#f39c12"
+       data-lowcolor="#3498db"
+       data-suncolor="#f1c40f"
+       data-cloudcolor="#bdc3c7"
+       data-raincolor="#2980b9">
        GREENWOOD WEATHER
     </a>
   </div>
 
-  <!-- ⏰ Clock Script (Central Time) -->
   <script>
+    // ⏰ Central Time Clock
     function updateClock() {
       const now = new Date();
       document.getElementById('clock').innerText = now.toLocaleTimeString('en-US', {
@@ -66,7 +84,7 @@
     setInterval(updateClock, 1000);
   </script>
 
-  <!-- 🌦️ WeatherWidget.io Script -->
+  <!-- 🌦️ WeatherWidget script -->
   <script>
     !function(d,s,id){
       var js,fjs=d.getElementsByTagName(s)[0];
