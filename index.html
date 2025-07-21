@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gym Dashboard</title>
+  <title>Home Gym Dashboard</title>
   <style>
     body {
       margin: 0;
-      background: #111;
+      background-color: #000;
       color: #fff;
-      font-family: Arial, sans-serif;
+      font-family: sans-serif;
       text-align: center;
     }
     #clock {
-      font-size: 5em;
-      margin-top: 40px;
+      font-size: 6em;
+      margin-top: 60px;
     }
-    img {
-      margin-top: 30px;
+    .workout-img {
+      margin-top: 40px;
       max-width: 80%;
       border-radius: 10px;
     }
     iframe {
-      margin-top: 30px;
+      margin-top: 40px;
       border: none;
     }
   </style>
@@ -29,17 +29,21 @@
 <body>
   <div id="clock"></div>
 
-  <img src="https://via.placeholder.com/600x400?text=Workout+Plan" alt="Workout Plan">
+  <img class="workout-img" src="https://photos.app.goo.gl/9jJpDtFd29VdCZ7y7" alt="Workout Plan">
 
   <iframe src="https://forecast7.com/en/38d96n94d38/greenwood/" width="300" height="250"></iframe>
 
   <script>
     function updateClock() {
       const now = new Date();
-      document.getElementById('clock').innerText = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      document.getElementById('clock').innerText = now.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      });
     }
-    setInterval(updateClock, 1000);
     updateClock();
+    setInterval(updateClock, 1000);
   </script>
 </body>
 </html>
